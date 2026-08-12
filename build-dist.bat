@@ -19,6 +19,9 @@ copy start-station.bat dist\app\ > nul
 copy dist\build-tmp\KosherShell.exe "dist\shiurim-station.exe" > nul
 rmdir /s /q dist\build-tmp
 
+rem ניקוי מטמון WebView2 שנוצר בזמן בדיקות (לא חלק מההפצה)
+if exist dist\app\.webview2 rmdir /s /q dist\app\.webview2
+
 rem העתקת node.exe כדי שהתוכנה תעבוד ללא התקנת Node.js
 if exist "dist\node.exe" goto :zip
 set NODE_SRC=%ProgramFiles%\nodejs\node.exe
