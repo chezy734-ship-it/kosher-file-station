@@ -14,7 +14,12 @@
 
 ## התקנה והרצה
 
-דרישה: [Node.js](https://nodejs.org) (LTS) — או פשוט עותק של התיקייה הזו.
+**מעטפת חלון (מומלץ — בלי להתקין שום דבר):** הורידו את ה-zip מהמהדורות, חלצו והריצו
+`shiurim-station.exe`. ה-exe עצמאי לחלוטין — כולל `node.exe` מאורז, בלי צורך בהתקנת
+Node.js ובלי דפדפן. הרצה: `shiurim-station.exe --explorer` או `--station`.
+יציאה מהחלון דורשת את סיסמת האחראי.
+
+**הרצה מהקוד (למפתחים):** דורש [Node.js](https://nodejs.org) (LTS).
 
 ```bash
 node server.js
@@ -24,16 +29,12 @@ node server.js
 - סייר מסונן: `http://127.0.0.1:8787`
 - עמדת שיעורים: `http://127.0.0.1:8787/station`
 
-**מצב קיוסק (מסך מלא):**
-- **מעטפת חלון אמיתית (מומלץ):** `build-dist.bat` מרכיב את `dist\` עם הקובץ
-  `shiurim-station.exe` (מסך מלא, בלי דפדפן). הרצה: `shiurim-station.exe --explorer` או
-  `--station`. יציאה מהחלון דורשת את סיסמת האחראי.
-- **דפדפן בקיוסק:** `start-explorer.bat` או `start-station.bat` מריצים את השרתחים
-  Chrome ב-`--kiosk`.
+**מצב קיוסק עם דפדפן:** `start-explorer.bat` או `start-station.bat` מריצים את השרתחים
+Chrome ב-`--kiosk` (דורש Node.js מותקן).
 
 > חסימת `Ctrl+Alt+Del` נעשית ע"י תוכנת הקיוסק הקיימת שלכם — התוכנה הזו משתלבת איתה.
-> להפצה לאנשים ללא Node.js: הניחו לצד ה-exe תיקיית `app` עם קבצי התוכנה, או ארזו
-> `node.exe` בתוך `dist\` (ה-exe מוצא אותו).
+> `build-dist.bat` מרכיב את `dist\` כולל העתקה אוטומטית של `node.exe` מהמערכת — כך
+> שההפצה עובדת על כל מחשב בלי שום התקנה.
 
 בדיקות:
 
@@ -114,7 +115,8 @@ node scripts/e2e.js  # בדיקת קצה-לקצה (דורשת שרת רץ)
 
 המאגר: [github.com/chezy734-ship-it/kosher-file-station](https://github.com/chezy734-ship-it/kosher-file-station) · [הורדת v0.2.0 (zip)](https://github.com/chezy734-ship-it/kosher-file-station/releases/latest)
 
-הקובץ מכיל את `shiurim-station.exe` + תיקיית `app` עם התוכנה. הפעלה:
+הקובץ מכיל את `shiurim-station.exe` + `node.exe` מאורז + תיקיית `app` עם התוכנה.
+**אין צורך בהתקנת Node.js** — פשוט חלצו והריצו. הפעלה:
 - `shiurim-station.exe --explorer` — סייר קבצים מסונן
 - `shiurim-station.exe --station` — עמדת שיעורים
 
@@ -150,7 +152,7 @@ git push -u origin main
 | `users.json` / `history.json` / `audit.log` | נתוני העמדה |
 | `ffmpeg/` (אופציונלי) | שימו כאן `ffmpeg.exe` להמרה ל-MP3 |
 | `shell/` | מעטפת חלון .NET (WebView2) — מרכיבה את `shiurim-station.exe` |
-| `dist/` | תיקיית הפצה: exe + קבצי התוכנה (נוצרת ע"י `build-dist.bat`) |
+| `dist/` | תיקיית הפצה: exe + node.exe מאורז + קבצי התוכנה (נוצרת ע"י `build-dist.bat`) |
 
 **שימו לב:** `config.json` הנוכחי הוא **מצב דמו** — כולל את כונן `C:` ברשימת הכוננים
 המורשים ואת ספריית `library-demo`. להפעלה אמיתית יש לעבור על ההגדרות (גלגל השיניים),

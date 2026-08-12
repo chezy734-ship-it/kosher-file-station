@@ -19,6 +19,16 @@ copy start-station.bat dist\app\ > nul
 copy dist\build-tmp\KosherShell.exe "dist\shiurim-station.exe" > nul
 rmdir /s /q dist\build-tmp
 
+rem העתקת node.exe כדי שהתוכנה תעבוד ללא התקנת Node.js
+if exist "dist\node.exe" goto :zip
+set NODE_SRC=%ProgramFiles%\nodejs\node.exe
+if exist "%NODE_SRC%" copy "%NODE_SRC%" dist\node.exe > nul & goto :zip
+where node.exe > dist\node-path.tmp 2>nul
+set /p NODE_LINE=<dist\node-path.tmp
+del dist\node-path.tmp 2>nul
+if exist "%NODE_LINE%" copy "%NODE_LINE%" dist\node.exe > nul
+:zip
+
 echo.
 echo [3/3] סיום! ההפצה בתיקיית dist:
 echo   dist\shiurim-station.exe  - מעטפת חלון (מסך מלא)
