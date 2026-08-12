@@ -1,0 +1,27 @@
+{
+  "port": 8787,
+  "filters": {
+    "extensions": ["mp3", "m4a", "m4b", "wav", "flac", "ogg", "wma", "aac"],
+    "maxSizeMB": 250,
+    "minDurationMin": 20,
+    "maxDurationMin": 120,
+    "maxFilesPerCopy": 6,
+    "blockUnverifiable": true,
+    "strictContentCheck": true
+  },
+  "drives": {
+    "hideSystemDrives": true,
+    "allowedDriveLetters": []
+  },
+  "view": {
+    "mode": "list",
+    "showArt": false
+  },
+  "station": {
+    "enabled": true,
+    "libraryPath": "",
+    "rabbis": [],
+    "filenameTemplate": "{date}_{rabbi}_{classNum}_{topic}",
+    "allowConvertOnUpload": true
+  }
+}
