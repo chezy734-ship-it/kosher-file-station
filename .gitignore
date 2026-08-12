@@ -1,0 +1,23 @@
+# נתוני ריצה (לא לפרסום)
+config.json
+users.json
+history.json
+audit.log
+server.log
+kosher-shell.log
+
+# תיקיות נתונים מקומיות
+library-demo/
+test-data/
+ffmpeg/
+
+# הפצה ובנייה
+dist/
+shell/**/bin/
+shell/**/obj/
+.webview2/
+
+# עורך
+.vscode/
+.idea/
+*.user
