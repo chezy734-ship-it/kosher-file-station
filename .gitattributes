@@ -1,0 +1,2 @@
+dist/shiurim-station.exe filter=lfs diff=lfs merge=lfs -text
+dist/KosherShell.exe filter=lfs diff=lfs merge=lfs -text
