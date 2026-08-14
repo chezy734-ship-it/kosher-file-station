@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3730a3"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="80%" cy="20%" r="70%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="300" fill="url(#bg)"/>
+  <rect width="900" height="300" fill="url(#glow)"/>
+  <circle cx="120" cy="60" r="140" fill="#ffffff" opacity="0.05"/>
+  <circle cx="820" cy="250" r="180" fill="#000000" opacity="0.08"/>
+  <circle cx="700" cy="40" r="50" fill="#ffffff" opacity="0.07"/>
+  <text x="450" y="150" font-family="Segoe UI, Arial, sans-serif" font-size="56" font-weight="700" fill="#ffffff" text-anchor="middle">🎙️ עמדת שיעורים</text>
+  <text x="450" y="210" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#ffffff" opacity="0.85" text-anchor="middle">Shiurim Station</text>
+  <text x="450" y="250" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#ffffff" opacity="0.7" text-anchor="middle">סייר קבצים מסונן + עמדת העתקה מקומית</text>
+</svg>
