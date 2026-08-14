@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>סייר קבצים מסונן — עמדת שיעורים</title>
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<header>
+  <h1>🎧 סייר קבצים מסונן</h1>
+  <span class="sub">העתקת הקלטות שיעורים בלבד</span>
+  <a href="/station">עמדת שיעורים ›</a>
+  <button class="btn" id="gearBtn" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.35);color:#fff">⚙️ הגדרות</button>
+</header>
+
+<div class="toolbar">
+  <select id="driveSelect" title="כוננים זמינים"></select>
+  <button class="btn" id="upBtn">⬆ חזרה</button>
+  <input id="pathBox" readonly placeholder="נתיב...">
+  <input id="searchBox" placeholder="חיפוש קבצי אודיו (עד 3 רמות)...">
+  <button class="btn" id="refreshBtn">🔄 רענון</button>
+  <button class="btn" id="ejectBtn" title="הוצאה בטוחה של הכונן">⏏ הוצאה בטוחה</button>
+</div>
+<div class="search-panel" id="searchPanel" style="display:none"></div>
+
+<div class="filterbar" id="filterbar"></div>
+
+<div class="main" id="listView">
+  <table id="fileTable">
+    <thead>
+      <tr>
+        <th style="width:36px"><input type="checkbox" id="checkAll" title="בחירת הכל"></th>
+        <th data-key="name">שם</th>
+        <th data-key="title">כותרת</th>
+        <th data-key="artist">אמן</th>
+        <th data-key="size" class="num">גודל</th>
+        <th data-key="duration" class="num">אורך</th>
+        <th data-key="modified" class="num">שונה</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+  <div class="empty" id="emptyBox" style="display:none">אין קבצים בתיקייה זו (או שכל הקבצים מסוננים החוצה)</div>
+</div>
+
+<div class="main" id="iconView" style="display:none">
+  <div class="icon-grid" id="iconGrid"></div>
+  <div class="empty" id="emptyIcons" style="display:none">אין קבצים בתיקייה זו</div>
+</div>
+
+<div class="actionbar">
+  <span class="selinfo" id="selInfo">לא נבחרו קבצים</span>
+  <span class="dest">יעד:
+    <select id="destSelect"></select>
+  </span>
+  <button class="btn primary" id="copyBtn">📋 העתק ליעד</button>
+  <button class="btn" id="convertBtn" title="המרת הקבצים שנבחרו ל-MP3 (דורש ffmpeg)">🎵 המר ל-MP3</button>
+  <button class="btn" id="cutBtn" title="סימון קבצים להעברה (גזור)">✂️ גזור</button>
+  <button class="btn" id="pasteBtn" title="העברת הקבצים המסומנים לתיקייה הנוכחית (הדבק)" disabled>📋 הדבק כאן</button>
+  <button class="btn" id="renameBtn">✏️ שינוי שם</button>
+  <button class="btn danger" id="trashBtn">🗑 מחיקה</button>
+  <button class="btn" id="histBtn" title="היסטוריית העתקות הסשן">📜 היסטוריה</button>
+</div>
+
+<div class="history-drawer" id="historyDrawer" style="display:none">
+  <div class="history-head">📜 היסטוריית הפעולות (עד ניתוק) <button class="btn small" id="histClose">סגירה</button></div>
+  <div id="historyList"></div>
+</div>
+
+<div id="toasts"></div>
+<div id="modalRoot"></div>
+
+<script src="/static/shared.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>

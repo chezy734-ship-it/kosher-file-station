@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>עמדת שיעורים</title>
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+
+<!-- מסך פתיחה -->
+<div class="landing" id="landing">
+  <h1>🎙️ עמדת שיעורים</h1>
+  <p class="sub">העתקת שיעורים מהמכשיר · העלאת הקלטות · ניהול</p>
+  <div class="cards">
+    <div class="card" data-view="copy">
+      <div class="big">📥</div>
+      <h3>העתקה מהמכשיר</h3>
+      <p>דפדפו במכשיר, בחרו שיעורים והעתיקו אותם לספריית השיעורים של העמדה.</p>
+    </div>
+    <div class="card" data-view="recorder">
+      <div class="big">🎤</div>
+      <h3>העלאת הקלטה (מקליט)</h3>
+      <p>כניסה עם שם משתמש וסיסמה, מילוּא מספר שיעור ונושא, והעלאה לרב המורשה.</p>
+    </div>
+    <div class="card" data-view="manager">
+      <div class="big">🛠️</div>
+      <h3>ניהול (אחראי)</h3>
+      <p>ניהול מקליטים, צפייה בהיסטוריית העלאות וניהול ספריית השיעורים.</p>
+    </div>
+  </div>
+</div>
+
+<!-- העתקה מהמכשיר -->
+<div class="view" id="view-copy">
+  <div class="view-header">
+    <button class="btn" data-back>› חזרה</button>
+    <h2>📥 העתקה מהמכשיר לספריית השיעורים</h2>
+    <span class="who" id="copyLibInfo"></span>
+  </div>
+  <div class="toolbar">
+    <select id="copyDrive"></select>
+    <button class="btn" data-up>⬆ חזרה</button>
+    <input id="copyPath" readonly>
+    <input id="copySearch" placeholder="חיפוש...">
+    <button class="btn" data-refresh>🔄</button>
+  </div>
+  <div class="search-panel" id="copySearchPanel" style="display:none"></div>
+  <div class="main" style="overflow:auto;flex:1">
+    <table>
+      <thead><tr><th style="width:36px"><input type="checkbox" id="copyCheckAll"></th><th>שם</th><th class="num">גודל</th><th class="num">אורך</th><th class="num">שונה</th></tr></thead>
+      <tbody id="copyTbody"></tbody>
+    </table>
+  </div>
+  <div class="actionbar">
+    <span class="selinfo" id="copySelInfo">לא נבחרו קבצים</span>
+    <button class="btn primary" id="copyToLib">📋 העתק לספריית השיעורים</button>
+  </div>
+</div>
+
+<!-- העלאת הקלטה -->
+<div class="view" id="view-recorder">
+  <div class="view-header">
+    <button class="btn" data-back>› חזרה</button>
+    <h2>🎤 העלאת הקלטה</h2>
+    <span class="who" id="recWho"></span>
+  </div>
+
+  <div class="login-box" id="recLogin">
+    <h2>כניסת מקליט</h2>
+    <label>שם משתמש<input id="recUser"></label>
+    <label>סיסמה<input type="password" id="recPass"></label>
+    <button class="btn primary" id="recLoginBtn">כניסה</button>
+  </div>
+
+  <div id="recPanel" style="display:none;height:100%;flex-direction:column;flex:1">
+    <div class="toolbar">
+      <select id="recDrive"></select>
+      <button class="btn" data-up2>⬆ חזרה</button>
+      <input id="recPath" readonly>
+      <input id="recSearch" placeholder="חיפוש...">
+      <button class="btn" data-refresh2>🔄</button>
+    </div>
+    <div class="search-panel" id="recSearchPanel" style="display:none"></div>
+    <div class="main" style="overflow:auto;flex:1">
+      <table>
+        <thead><tr><th style="width:36px"><input type="checkbox" id="recCheckAll"></th><th>שם</th><th class="num">גודל</th><th class="num">אורך</th></tr></thead>
+        <tbody id="recTbody"></tbody>
+      </table>
+    </div>
+    <div class="actionbar" style="align-items:flex-start">
+      <span class="selinfo" id="recSelInfo">לא נבחרו קבצים</span>
+      <div style="flex:1;min-width:320px">
+        <div class="form-grid">
+          <label>רב (לפי הרשאתך)<select id="recRabbi"></select></label>
+          <label>מספר שיעור<input id="recClass" placeholder="לדוגמה 12"></label>
+          <label class="full">נושא<input id="recTopic" placeholder="לדוגמה: גמרא בבא מציעא פרק ב"></label>
+        </div>
+        <div class="filename-preview" id="recNamePrev"></div>
+        <div class="checkbox-inline" id="recConvWrap"><input type="checkbox" id="recConv" checked> להמיר ל-MP3 אוניברסלי בהעלאה</div>
+        <div class="info-box" id="recFp"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <button class="btn primary" id="recUpload" style="font-size:15px;padding:10px 20px">⬆ העלה לעמדה</button>
+        <button class="btn" id="recLogout">יציאה</button>
+      </div>
+    </div>
+    <div class="main" style="max-height:220px;overflow:auto;border-top:1px solid var(--border)">
+      <h3 style="padding:8px 12px;font-size:14px;color:#12355e">📜 ההעלאות שלי</h3>
+      <table class="history"><thead><tr><th>תאריך</th><th>קובץ</th><th>רב</th></tr></thead><tbody id="recHistory"></tbody></table>
+    </div>
+  </div>
+</div>
+
+<!-- ניהול -->
+<div class="view" id="view-manager">
+  <div class="view-header">
+    <button class="btn" data-back>› חזרה</button>
+    <h2>🛠️ ניהול העמדה</h2>
+    <span class="who" id="mgrWho"></span>
+  </div>
+
+  <div class="login-box" id="mgrLogin">
+    <h2>כניסת אחראי</h2>
+    <label>סיסמת אחראי/הגדרות<input type="password" id="mgrPass"></label>
+    <button class="btn primary" id="mgrLoginBtn">כניסה</button>
+  </div>
+
+  <div id="mgrPanel" style="display:none;flex:1;flex-direction:column;min-height:0">
+    <div class="main" style="flex:1;overflow:auto">
+      <h3 style="padding:10px 14px;font-size:15px;color:#12355e">👥 מקליטים רשומים</h3>
+      <table class="users">
+        <thead><tr><th>שם משתמש</th><th>רבנים מורשים</th><th>זיהוי התקן</th><th>נוצר</th><th></th></tr></thead>
+        <tbody id="mgrUsers"></tbody>
+      </table>
+      <button class="btn primary" id="mgrAddUser" style="margin:10px 14px">+ הוספת מקליט</button>
+
+      <h3 style="padding:10px 14px;font-size:15px;color:#12355e">📜 היסטוריית העלאות</h3>
+      <table class="history">
+        <thead><tr><th>תאריך</th><th>משתמש</th><th>קובץ</th><th>רב</th></tr></thead>
+        <tbody id="mgrHistory"></tbody>
+      </table>
+
+      <h3 style="padding:10px 14px;font-size:15px;color:#12355e">📂 ספריית השיעורים</h3>
+      <div id="mgrLib"></div>
+    </div>
+  </div>
+</div>
+
+<div id="toasts"></div>
+<div id="modalRoot"></div>
+<script src="/static/shared.js"></script>
+<script src="/static/station.js"></script>
+</body>
+</html>
